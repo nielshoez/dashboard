@@ -1,0 +1,31 @@
+<%- include ('./partials/header') %>
+<%- include ('./partials/navbar') %>
+
+<link rel="stylesheet" type="text/css" href="/css/styles.css" />
+
+
+<form class="form-signin" action="/services" method="POST">
+    <h1 class="h3 mb-3 font-weight-normal">Choose your Services</h1>
+
+    <!-- meteo -->
+    <label for="widget1" class="switch">
+        <input type="checkbox" id="widget1" name="widget1" value="Meteo" <%= user.services.includes('Meteo') ? "checked" : "" %>>
+        <span class="slider round"></span>
+    </label>
+    <a>meteo</a><br>
+    
+    <!-- Corona -->
+    <label for="widget2" class="switch">
+        <input type="checkbox" id="widget2" name="widget2" value="Corona" <%= user.services.includes('Corona') ? "checked" : "" %>>
+        <span class="slider round"></span>
+    </label>
+    <a>Corona</a><br>
+    
+    <!-- oxford -->
+    <label for="widget3" class="switch">
+        <input type="checkbox" id="widget3" name="widget3" value="Dictionary" <%= user.services.includes('Dictionary') ? "checked" : "" %>>
+        <span class="slider round"></span>
+    </label>
+    <a>Dictionary</a><br>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+</form>

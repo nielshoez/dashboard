@@ -1,0 +1,54 @@
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalStock">
+    get Stock Exchange
+</button>
+    
+<div class="modal fade" id="exampleModalStock" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelStock" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabelStock">Stock exchange</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        
+        <div class="modal-body">
+        <form class="form-signin" action="/widgets" method="POST">
+            <label for="StockCurrencyFrom">Currency From</label>
+            <select class="browser-default custom-select" name="StockCurrencyFrom" id="StockCurrencyFrom">
+                <option>Choose a currency to exchange from</option>
+            </select>
+
+            <label for="StockCurrencyTo">Currency To</label>
+            <select class="browser-default custom-select" name="StockCurrencyTo" id="StockCurrencyTo">
+                <option>Choose a currency to exchange to</option>
+            </select>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        </div>
+    </div>
+    </div>
+</div>
+
+<script>
+    var currency = ["AED","AFN","ALL","AMD","ANG","AOA","ARS","AUD","AWG","AZN","BAM","BBD","BDT","BGN","BHD","BIF","BMD","BND","BOB","BRL","BSD","BTN","BWP","BZD","CAD","CDF","CHF","CLF","CLP","CNH","CNY","COP","CUP","CVE","CZK","DJF","DKK","DOP","DZD","EGP","ERN","ETB","EUR","FJD","FKP","GBP","GEL","GHS","GIP","GMD","GNF","GTQ","GYD","HKD","HNL","HRK","HTG","HUF","IDR","ILS","INR","IQD","IRR","ISK","JEP","JMD","JOD","JPY","KES","KGS","KHR","KMF","KPW","KRW","KWD","KYD","KZT","LAK","LBP","LKR","LRD","LSL","LYD","MAD","MDL","MGA","MKD","MMK","MNT","MOP","MRO","MRU","MUR","MVR","MWK","MXN","MYR","MZN","NAD","NGN","NOK","NPR","NZD","OMR","PAB","PEN","PGK","PHP","PKR","PLN","PYG","QAR","RON","RSD","RUB","RUR","RWF","SAR","BDf","SCR","SDG","SDR","SEK","SGD","SHP","SLL","SOS","SRD","SYP","SZL","THB","TJS","TMT","TND","TOP","TRY","TTD","TWD","TZS","UAH","UGX","USD","UYU","UZS","VND","VUV","WST","XAF","XCD","XDR","XOF","XPF","YER","ZAR","ZMW","ZWL"]
+
+    var select = document.getElementById("StockCurrencyFrom");
+    for(var i = 0; i < currency.length; i++) {
+        var opt = currency[i];
+        var el = document.createElement("option");
+        el.textContent = opt;
+        el.value = opt;
+        select.appendChild(el);
+    }
+
+    var select1 = document.getElementById("StockCurrencyTo");
+    for(var i = 0; i < currency.length; i++) {
+        var opt = currency[i];
+        var el = document.createElement("option");
+        el.textContent = opt;
+        el.value = opt;
+        select1.appendChild(el);
+    }
+</script>

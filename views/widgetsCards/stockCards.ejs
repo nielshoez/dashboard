@@ -1,0 +1,80 @@
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/cards.css" />
+
+
+<div class="page-content page-container" id="page-contentStock">
+    <div class="padding">
+        <div class="row container d-flex justify-content-center">
+            <div class="col-sm-12">
+                <!-- Draggable default card start -->
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Widgets Corona tests</h5>
+                    </div>
+                    <div class="card-block">
+                        <div class="row" id="stock">
+                            <!-- HERE IS THE JAVASCRIPT CODE -->
+                        </div>
+                    </div>
+                </div> <!-- Draggable default card start -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+$( document ).ready(function() {
+    $("#stock").sortable();
+    $("#stock").disableSelection();
+});
+</script>
+
+<script>
+
+    var currency = ["AED","AFN","ALL","AMD","ANG","AOA","ARS","AUD","AWG","AZN","BAM","BBD","BDT","BGN","BHD","BIF","BMD","BND","BOB","BRL","BSD","BTN","BWP","BZD","CAD","CDF","CHF","CLF","CLP","CNH","CNY","COP","CUP","CVE","CZK","DJF","DKK","DOP","DZD","EGP","ERN","ETB","EUR","FJD","FKP","GBP","GEL","GHS","GIP","GMD","GNF","GTQ","GYD","HKD","HNL","HRK","HTG","HUF","IDR","ILS","INR","IQD","IRR","ISK","JEP","JMD","JOD","JPY","KES","KGS","KHR","KMF","KPW","KRW","KWD","KYD","KZT","LAK","LBP","LKR","LRD","LSL","LYD","MAD","MDL","MGA","MKD","MMK","MNT","MOP","MRO","MRU","MUR","MVR","MWK","MXN","MYR","MZN","NAD","NGN","NOK","NPR","NZD","OMR","PAB","PEN","PGK","PHP","PKR","PLN","PYG","QAR","RON","RSD","RUB","RUR","RWF","SAR","BDf","SCR","SDG","SDR","SEK","SGD","SHP","SLL","SOS","SRD","SYP","SZL","THB","TJS","TMT","TND","TOP","TRY","TTD","TWD","TZS","UAH","UGX","USD","UYU","UZS","VND","VUV","WST","XAF","XCD","XDR","XOF","XPF","YER","ZAR","ZMW","ZWL"]
+
+  
+    var addColsStock = function (num){
+        <% for(var i = 0; i < data.stock.length; i++) { %>
+            var myCol = $('<div class="col-lg-12 col-xl-3" style=""></div>');
+            var myDeleteBtn = $('<form class="form-signin" action="/widgets" method="POST"> <input type="hidden" id="fromCurrencyClose" name="fromCurrencyClose" value="<%=data.stock[i].currencies.From%>"><input type="hidden" id="toCurrencyClose" name="toCurrencyClose" value="<%=data.stock[i].currencies.To%>">  <button type="submit" class="close" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </form>');
+            var myBlock = $('<div class="card-block"></div>');
+            var myTitle = $('<h4 class="card-title"><%=data.stock[i].currencies.From%>, <%=data.stock[i].currencies.To%></h4>');
+            var myBody = $('<p class="card-text">The exchange rate from <%=data.stock[i].stock.From%> to <%=data.stock[i].stock.To%> is <%=data.stock[i].stock.ExchangeRate%></p>');
+            var myEditButton = $('<form class="form-signin" action="/widgets" method="POST"> <label for="StockCurrencyFromEdit">Currency From</label> <select class="browser-default custom-select" name="StockCurrencyFromEdit" id="StockCurrencyFromEdit"> <option>Choose a currency to exchange from</option> </select><label for="StockCurrencyToEdit">Currency To</label> <select class="browser-default custom-select" name="StockCurrencyToEdit" id="StockCurrencyToEdit"> <option>Choose a currency to exchange to</option> </select><input type="hidden" id="fromCurrency" name="fromCurrency" value="<%=data.stock[i].currencies.From%>"><input type="hidden" id="toCurrency" name="toCurrency" value="<%=data.stock[i].currencies.To%>"><button type="submit" class="btn btn-primary">Submit</button> </form>');
+            myDeleteBtn.appendTo(myBlock);
+            myTitle.appendTo(myBlock);
+            myBody.appendTo(myBlock);
+            myBlock.appendTo(myCol);
+            myEditButton.appendTo(myCol);
+            myCol.appendTo('#stock');
+
+            var selectEdit = document.getElementById("StockCurrencyFromEdit");
+            for(var i = 0; i < currency.length; i++) {
+                var opt = currency[i];
+                var el = document.createElement("option");
+                el.textContent = opt;
+                el.value = opt;
+                selectEdit.appendChild(el);
+            }
+
+            var select1Edit = document.getElementById("StockCurrencyToEdit");
+            for(var i = 0; i < currency.length; i++) {
+                var opt = currency[i];
+                var el = document.createElement("option");
+                el.textContent = opt;
+                el.value = opt;
+                select1Edit.appendChild(el);
+            }
+
+        <% } %>
+        
+    };
+
+    $(document).ready(function(){
+        addColsStock(<%= data.stock.length%>);
+        return false;
+    });
+
+
+</script>

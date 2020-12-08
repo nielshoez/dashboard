@@ -1,0 +1,25 @@
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCorona">
+  get Corona Status 
+</button>
+  
+  <div class="modal fade" id="exampleModalCorona" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelCorona" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabelCorona">Corona Form</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        
+        <div class="modal-body">
+          <form class="form-signin" action="/widgets" method="POST">
+              <label for="locationCorona">Country</label>
+              <input type="adress" class="form-control" id="locationCorona" name="locationCorona" placeholder="Country">
+ 
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

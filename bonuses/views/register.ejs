@@ -1,0 +1,54 @@
+<%- include ('./partials/messages') %>
+<%- include ('./partials/header') %>
+<link rel="stylesheet" type="text/css" href="/css/styles.css" />
+
+
+<form class="form-signin" action="/users/register" method="POST">
+<h1 class="h3 mb-3 font-weight-normal">Please Register</h1>
+<div>
+    <label for="name" class="sr-only">Name</label>
+    <input
+      type="name"
+      name="name"
+      placeholder="Enter Name"
+      value="<%= typeof name != 'undefined' ? name : '' %>"
+      class="form-control"
+    />
+  
+</div>
+<div>
+  <label for="inputEmail" class="sr-only">Email address</label>
+    <input
+      type="email"
+      name="email"
+      placeholder="Enter Email"
+      value="<%= typeof email != 'undefined' ? email : '' %>"
+      class="form-control"
+      required autofocus
+    />
+  </div>
+  <div >
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input
+      type="password"
+      name="password"
+      placeholder="Create Password"
+      value="<%= typeof password != 'undefined' ? password : '' %>"
+      class="form-control"
+      required
+    />
+  </div>
+  <div >
+    <label for="inputPassword2" class="sr-only">Password</label>
+    <input
+      type="password"
+      name="password2"
+      placeholder="Confirm Password"
+      value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
+      class="form-control"
+      required
+    />
+  </div>
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+  <p >Have An Account? <a href="/users/login">Login</a></p>
+</form>

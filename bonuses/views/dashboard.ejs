@@ -1,0 +1,31 @@
+<%- include ('./partials/header') %>
+<%- include ('./partials/navbar') %>
+<body>
+    <main role="main" class="container">
+
+      <div class="starter-template">
+        <h1>Welcome <%= data.user.name %></h1>
+        <h2><%= data.user.services %></h2>
+        <%  if(data.user.services.includes('Meteo'))  { %> 
+          <%- include ('./widgetForms/meteoForm.ejs') %> 
+          <%- include ('./widgetForms/meteoYearForm.ejs') %> 
+          <%- include ('./widgetsCards/meteoCard.ejs', {data:data}) %>
+          <%- include ('./widgetsCards/airCards.ejs', {data:data}) %>
+        <% } %> 
+        <%  if(data.user.services.includes('Corona'))  { %> 
+          <%- include ('./widgetForms/coronaForm.ejs')%>
+          <%- include ('./widgetForms/coronaTestForm.ejs')%>
+          <%- include ('./widgetsCards/coronaCards.ejs', {data:data}) %>
+          <%- include ('./widgetsCards/coronaTestCards.ejs', {data:data}) %>
+        <% } %> 
+        <%  if(data.user.services.includes('Dictionary'))  { %> 
+          <%- include ('./widgetForms/wordFrom.ejs')%>
+          <%- include ('./widgetForms/pronunciationForm.ejs')%>
+          <%- include ('./widgetsCards/wordCards.ejs', {data:data}) %>
+          <%- include ('./widgetsCards/wordPronCards.ejs', {data:data}) %>
+        <% } %>
+
+        <a href="/users/logout">Logout</a>
+      </div>
+    </main>
+</body>

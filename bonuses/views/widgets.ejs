@@ -1,0 +1,14 @@
+<%- include ('./partials/header') %>
+<%- include ('./partials/navbar') %>
+
+<link rel="stylesheet" type="text/css" href="/css/styles.css" />
+<h1>widgets</h1>
+<% if(user.services.includes('Meteo')) { %>
+    <%- include ('./widgetForms/meteoForm') %> 
+<% } if(user.services.includes('Youtube')) { %>
+    <%- include ('./widgetForms/youtubeForm') %> 
+<% } if(user.services.includes('Stock Market')) { %>
+    <%- include ('./widgetForms/stockForm') %> 
+<% } else if (!user.services.includes('Meteo') && !user.services.includes('Youtube') && !user.services.includes('Stock Market')) {%>
+    <h2>You Need To Subscribe To Services</h2>
+<% } %>  

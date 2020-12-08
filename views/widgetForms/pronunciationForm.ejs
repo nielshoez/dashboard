@@ -1,0 +1,25 @@
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalWordPron">
+    get Word pronunciation
+  </button>
+    
+    <div class="modal fade" id="exampleModalWordPron" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelWordPron" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabelWordPron">Word Form</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          
+          <div class="modal-body">
+            <form class="form-signin" action="/widgets" method="POST">
+                <label for="wordPron">word</label>
+                <input type="adress" class="form-control" id="wordPron" name="wordPron" placeholder="Word">
+   
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>

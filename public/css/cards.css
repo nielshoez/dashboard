@@ -1,0 +1,24 @@
+.stretch-card>.card {
+    width: 100%;
+    min-width: 100%
+}
+
+body {
+    background-color: #f9f9fa
+}
+
+.flex {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto
+}
+
+.padding {
+    padding: 3rem !important
+}
+
+
+.card-block {
+    padding: 1.25rem;
+    background-color: #fff !important
+}

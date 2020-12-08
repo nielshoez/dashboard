@@ -1,0 +1,60 @@
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/cards.css" />
+
+
+<div class="page-content page-container" id="page-contentCoronaTest">
+    <div class="padding">
+        <div class="row container d-flex justify-content-center">
+            <div class="col-sm-12">
+                <!-- Draggable default card start -->
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Widgets Corona tests</h5>
+                    </div>
+                    <div class="card-block">
+                        <div class="row" id="coronaTest">
+                            <!-- HERE IS THE JAVASCRIPT CODE -->
+                        </div>
+                    </div>
+                </div> <!-- Draggable default card start -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+$( document ).ready(function() {
+    $("#coronaTest").sortable();
+    $("#coronaTest").disableSelection();
+});
+</script>
+
+<script>
+
+  
+    var addColsCoronaTest = function (num){
+        <% for(var i = 0; i < data.coronaTest.length; i++) { %>
+            var myCol = $('<div class="col-lg-12 col-xl-3" style=""></div>');
+            var myIcon = $('<div class="card-sub"> <img  src="<%= data.coronaTest[i].corona.flag%>" alt="Card image cap", width="100">')
+            var myDeleteBtn = $('<form class="form-signin" action="/widgets" method="POST"> <input type="hidden" id="coronaTestClose" name="coronaTestClose" value="<%=data.coronaTest[i].countryName%>">  <button type="submit" class="close" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </form>')
+            var myBlock = $('<div class="card-block"></div>');
+            var myTitle = $('<h4 class="card-title"><%=data.coronaTest[i].countryName%></h4>');
+            var myBody = $('<p class="card-text">In <%=data.coronaTest[i].countryName%>  there are : <%= data.coronaTest[i].corona.tests %> tests and <%= data.coronaTest[i].corona.million %> test per One million inhabitant </p>');
+            var myEditButton = $('<form class="form-signin" action="/widgets" method="POST"> <label for="EditcoronaTest">Country</label> <input type="adress" class="form-control" id="EditcoronaTest" name="EditcoronaTest" placeholder="Country"> <input type="hidden" id="currentCountry" name="currentCountry" value="<%=data.coronaTest[i].countryName%>">  <button type="submit" class="btn btn-primary">Submit</button> </form>');
+            myDeleteBtn.appendTo(myBlock);
+            myIcon.appendTo(myBlock);
+            myTitle.appendTo(myBlock);
+            myBody.appendTo(myBlock);
+            myBlock.appendTo(myCol);
+            myEditButton.appendTo(myCol);
+            myCol.appendTo('#coronaTest');
+        <% } %>
+        
+    };
+
+    $(document).ready(function(){
+        addColsCoronaTest(<%= data.coronaTest.length%>);
+        return false;
+    });
+
+</script>
